@@ -1,7 +1,3 @@
-Hier ist ein Entwurf für eine professionelle `README.md`, die genau auf deine Struktur (`fill_db.py` und `main.py`) und deine Ziele zugeschnitten ist.
-
----
-
 # Telco_Data_Visualization 📊
 
 Ein Python-basiertes Analysetool für Telekommunikationsdaten. Dieses Projekt automatisiert die Verwaltung einer SQLite-Datenbank, berechnet wichtige Geschäftskennzahlen (KPIs) und visualisiert Umsatzdaten nach Standorten.
