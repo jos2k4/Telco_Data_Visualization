@@ -73,7 +73,7 @@ for row in rows:
     print(row)
 
 
-#Logik: Wenn 30% oder weniger des Datenvolumens verbraucht werden, dann gilt dieser Kunde als High-Risk-Customer
+#Logik: Wenn 60% oder weniger des Datenvolumens verbraucht werden, dann gilt dieser Kunde als High-Risk-Customer
 
 print("High-Risk-Customers")
 cursor.execute("""SELECT
@@ -83,7 +83,7 @@ FROM customer c
     JOIN Contracts con ON c.customer_id = con.customer_id
     JOIN Plans p ON con.Plan_id = p.Plan_id
     JOIN usage u ON con.Contract_id = u.Contract_id
-WHERE u.GB_consumed < (p.data_limit_GB * 0.3)
+WHERE u.GB_consumed < (p.data_limit_GB * 0.6)
 ORDER BY u.GB_consumed DESC;""")
 
 rows = cursor.fetchall()
