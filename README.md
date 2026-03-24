@@ -18,7 +18,7 @@ Ein Python-basiertes Analysetool für Telekommunikationsdaten. Dieses Projekt au
 
 1.  **Repository klonen:**
     ```bash
-    git clone https://github.com/DEIN_RECHNAMEN/Telco_Data_Visualization.git
+    git clone https://github.com/jos2k4/Telco_Data_Visualization.git
     cd Telco_Data_Visualization
     ```
 
