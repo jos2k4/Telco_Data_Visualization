@@ -5,7 +5,7 @@ Dieses Projekt analysiert Kundendaten und Nutzungsverhalten in einem Telekommuni
 Identifikation von Umsatztreibern und Upselling-Potenzialen durch Verknüpfung von Vertragsdaten mit realem Datenverbrauch.
 
 ## 📊 Features
-* **Umsatz-Analyse:** Visualisierung des Revenue nach PLZ.
+* **Umsatz-Analyse:** Visualisierung des Revenue nach PLZ, Visualisierung der High-Risk-Customer
 * **Upselling-Check:** Abgleich von verbrauchtem Volumen vs. Tarif-Limit.
 * **Tech-Stack:** Python, SQL (SQLite), Pandas, Matplotlib.
 
