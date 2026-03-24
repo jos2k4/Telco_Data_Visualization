@@ -11,3 +11,8 @@ Identifikation von Umsatztreibern und Upselling-Potenzialen durch Verknüpfung v
 
 ## Revenue Chart
 <img width="1000" height="600" alt="revenue_chart" src="https://github.com/user-attachments/assets/f41a0cf6-f2ab-4732-bd5e-f1b5c9a4bdba" />
+
+## High-Risk-Customer Chart
+<img width="1000" height="600" alt="image" src="https://github.com/user-attachments/assets/69665730-b3e4-4ef2-b7a4-a7688a3b158d" />
+
+
