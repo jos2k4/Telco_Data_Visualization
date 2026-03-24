@@ -43,12 +43,3 @@ Die Datenbank (`data.db`) umfasst folgende Relationen:
 * `Contracts`: Verknüpfung von Kunden mit Tarifen und Geräten.
 * `usage`: Monatlicher Datenverbrauch pro Vertrag.
 
-## 📈 KPI Definitionen
-
-* **ARPU ($Average\ Revenue\ Per\ User$):**
-    $$ARPU = \frac{\sum \text{Plan\_Price}}{\text{Anzahl aktive Kunden}}$$
-* **Upgrade-Logik:** Kunden werden markiert, wenn ihr Verbrauch $GB\_consumed > 80\%$ des Tariflimits erreicht.
-
----
-
-**Möchtest du, dass ich noch einen Abschnitt "Lizenz" oder "Mitwirkende" hinzufüge?**
