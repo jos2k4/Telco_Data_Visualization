@@ -1,19 +1,19 @@
 import sqlite3 as lite
-import pandas as pd
-import matplotlib.pyplot as plt
 # define database path
 db_path = 'data.db'
 conn = lite.connect(db_path)
 cursor = conn.cursor()
 
+#lösche alle Einträge zum Schutz vor Duplikaten
 cursor.execute("DROP TABLE IF EXISTS usage")
 cursor.execute("DROP TABLE IF EXISTS Contracts")
 cursor.execute("DROP TABLE IF EXISTS Plans")
 cursor.execute("DROP TABLE IF EXISTS customer")
 
 
+#SQL Befehle werden an Datenbank übergeben, falls diese noch nicht existieren
 cursor.execute("""CREATE TABLE IF NOT EXISTS customer(
-                         customer_id INTEGER PRIMARY KEY AUTOINCREMENT ,
+                         customer_id INTEGER PRIMARY KEY AUTOINCREMENT ,    --einzigartige id
                          name TEXT,
                          surname TEXT,
                          zip_code INTEGER,
@@ -21,32 +21,33 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS customer(
 );""")
 
 cursor.execute("""CREATE TABLE IF NOT EXISTS Plans(
-                      Plan_id INTEGER PRIMARY KEY AUTOINCREMENT ,
+                      Plan_id INTEGER PRIMARY KEY AUTOINCREMENT ,       --einzigartige id
                       Plan_name TEXT,
-                      Plan_price DECIMAL(10,2),
+                      Plan_price DECIMAL(10,2),     --genau 2 Nachkommastellen
                       data_limit_GB INTEGER
 );""")
 
 cursor.execute("""CREATE TABLE IF NOT EXISTS Contracts(
-                    Contract_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Contract_ID INTEGER PRIMARY KEY AUTOINCREMENT,      --einzigartige id
                     customer_id INTEGER,
                     Plan_id INTEGER,
                     Status TEXT, --'Active' or 'Canceled'
-                    Device_Option TEXT, -- 'iPhone', 'Android' or 'Sim-Only'
+                    Device_Option TEXT, -- 'iPhone', 'Android' oder 'Sim-Only'
                     Start_date DATE,
-                    FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
-                    FOREIGN KEY (Plan_id) REFERENCES Plans(Plan_id)
+                    FOREIGN KEY (customer_id) REFERENCES customer(customer_id), --Kontrolle, ob id valide ist
+                    FOREIGN KEY (Plan_id) REFERENCES Plans(Plan_id)     --Kontrolle, ob id valide ist
 
 );""")
 
 cursor.execute("""CREATE TABLE IF NOT EXISTS usage(
-    Log_id INTEGER PRIMARY KEY AUTOINCREMENT ,
+    Log_id INTEGER PRIMARY KEY AUTOINCREMENT ,      --einzigartige id
     Contract_id INTEGER,
     Billing_Month TEXT,
-    GB_consumed DECIMAL(10, 2),
-    FOREIGN KEY (Contract_ID) REFERENCES Contracts(Contract_ID)
+    GB_consumed DECIMAL(10, 2),     --genau 2 Nachkommastellen
+    FOREIGN KEY (Contract_ID) REFERENCES Contracts(Contract_ID)     --Kontrolle, ob id valide ist
 );""")
 
+#Füllung der Tables
 cursor.execute("""INSERT OR IGNORE INTO customer (name, surname, zip_code, registration_date) VALUES
                                                                       ('Max', 'Mustermann', 40474, '2022-01-15'),
                                                                       ('Erika', 'Schmidt', 40210, '2023-05-20'),
@@ -74,7 +75,9 @@ cursor.execute("""INSERT OR IGNORE INTO usage (Contract_id, Billing_Month, GB_co
                                                                 (3, '2026-03', 10.5), -- Joshua (Limit 25GB): Alles okay.
                                                                 (5, '2026-03', 3.0);  -- Sarah (Limit 12GB): Nutzt wenig.""")
 
+#Speicherung
 conn.commit()
+#Schließe die Connection um Speicher zu sparen
 conn.close()
 
 
